@@ -4,7 +4,7 @@ export const Header = styled.header`
   width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  outline: 2px solid red;
+
   padding: 20px;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -27,5 +27,5 @@ export const Input = styled.input`
   font-size: 24px;
   border-radius: 5px;
   border: 1px solid black;
-  width: 300px;
+  width: 600px;
 `;

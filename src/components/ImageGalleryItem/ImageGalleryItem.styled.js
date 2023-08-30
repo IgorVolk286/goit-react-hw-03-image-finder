@@ -7,4 +7,5 @@ export const Img = styled.img`
   height: 250px;
   margin: 0;
   display: block;
+  overflow: hidden;
 `;
