@@ -171,9 +171,11 @@ export class App extends Component {
       <div>
         <Searchbar onSubmit={this.submitForm} />
         {this.state.images.length !== 0 && (
-          <ImageGallery collection={this.state.images} />
+          <>
+            <ImageGallery collection={this.state.images} />
+            <Button />
+          </>
         )}
-        {this.state.images.length !== 0 && <Button />}
 
         {/* <ThreeCircles
           height="100"
