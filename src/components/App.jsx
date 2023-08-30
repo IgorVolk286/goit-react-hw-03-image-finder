@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
-import { ThreeCircles } from 'react-loader-spinner';
+// import { ThreeCircles } from 'react-loader-spinner';
 export class App extends Component {
   state = {
     search: ' ',
