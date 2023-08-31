@@ -4,13 +4,14 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { ThreeCircles } from 'react-loader-spinner';
-
+import { Modal } from './Modal/Modal';
 export class App extends Component {
   state = {
     search: ' ',
     images: [],
     page: 1,
     loading: false,
+    show: false,
   };
   onSubmitForm = search => {
     this.setState({
@@ -43,17 +44,22 @@ export class App extends Component {
   render() {
     return (
       <div>
+        {/* <Modal /> */}
         <Searchbar onSubmit={this.onSubmitForm} />
-        <ImageGallery>
-          <ImageGalleryItem collection={this.state.images} />
-        </ImageGallery>
+        {this.state.images.length !== 0 && (
+          <>
+            <ImageGallery>
+              <ImageGalleryItem collection={this.state.images} />
+            </ImageGallery>
 
-        <Button onClick={this.onClickButtonLoad} />
+            <Button onClick={this.onClickButtonLoad} />
+          </>
+        )}
 
         {this.state.loading && (
           <ThreeCircles
-            height="100"
-            width="100"
+            height="300"
+            width="300"
             color="#4fa94d"
             wrapperStyle={{}}
             wrapperClass=""
