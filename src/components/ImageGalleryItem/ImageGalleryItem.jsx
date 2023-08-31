@@ -1,10 +1,10 @@
 import React from 'react';
 import { Item, Img } from './ImageGalleryItem.styled.js';
 
-export const ImageGalleryItem = ({ collectionItems }) => {
-  return collectionItems.map(({ id, webformatURL, tags }) => {
+export const ImageGalleryItem = ({ collection }) => {
+  return collection.map(({ id, webformatURL, tags }) => {
     return (
-      <Item>
+      <Item key={id}>
         <Img src={webformatURL} alt={tags} />
       </Item>
     );
