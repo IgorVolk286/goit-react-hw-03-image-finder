@@ -4,7 +4,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { ThreeCircles } from 'react-loader-spinner';
-import { Modal } from './Modal/Modal';
+// import { Modal } from './Modal/Modal';
 export class App extends Component {
   state = {
     search: ' ',
