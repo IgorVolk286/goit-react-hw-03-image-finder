@@ -56,10 +56,10 @@ export class App extends Component {
   };
 
   render() {
-    const { show, images, totalHits } = this.state;
+    const { show, images, totalHits, id } = this.state;
     return (
       <div>
-        {show && <Modal onClickItem={this.onClickItem} />}
+        {show && <Modal onClickItem={this.onClickItem} idItem={id} />}
         <Searchbar onSubmit={this.onSubmitForm} />
         {images.length !== 0 && (
           <ImageGallery getId={this.getId}>

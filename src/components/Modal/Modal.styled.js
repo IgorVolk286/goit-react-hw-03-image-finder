@@ -8,8 +8,8 @@ export const Overlay = styled.div`
   border: 1px solid black;
 `;
 export const Img = styled.img`
-  width: 600px;
-  height: 550px;
+  width: 800px;
+  height: 700px;
 `;
 
 export const Div = styled.div`
