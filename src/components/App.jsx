@@ -56,7 +56,7 @@ export class App extends Component {
   };
 
   render() {
-    const { show, images, totalHits, id } = this.state;
+    const { show, images, totalHits } = this.state;
     return (
       <div>
         {show && <Modal onClickItem={this.onClickItem} />}
