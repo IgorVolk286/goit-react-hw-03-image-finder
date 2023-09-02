@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const Item = styled.li`
-  box-shadow: inset;
+  box-shadow: indigo;
+  margin: 0;
 `;
 export const Img = styled.img`
   width: 320px;

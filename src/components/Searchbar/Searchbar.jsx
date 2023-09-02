@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Button, Input } from './Searchbar.styled';
+import { Header, Button, Input, Forma } from './Searchbar.styled';
 import { toast } from 'react-toastify';
-
+import { TfiSearch } from 'react-icons/tfi';
 export class Searchbar extends Component {
   state = {
     search: ' ',
@@ -23,9 +23,9 @@ export class Searchbar extends Component {
   render() {
     return (
       <Header>
-        <form onSubmit={this.submitForm}>
+        <Forma onSubmit={this.submitForm}>
           <Button type="submit">
-            <span>Search</span>
+            <TfiSearch />
           </Button>
           <Input
             onChange={this.changeInput}
@@ -35,7 +35,7 @@ export class Searchbar extends Component {
             type="text"
             placeholder="Search images and photos"
           />
-        </form>
+        </Forma>
       </Header>
     );
   }
