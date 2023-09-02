@@ -19,7 +19,7 @@ export class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { search, page, images, totalHits } = this.state;
     window.scrollBy({
-      top: 700,
+      top: 750,
       behavior: 'smooth',
     });
     if (images.length === totalHits) {
