@@ -3,8 +3,8 @@ export const Item = styled.li`
   box-shadow: inset;
 `;
 export const Img = styled.img`
-  width: 360px;
-  height: 250px;
+  width: 320px;
+  height: 200px;
   margin: 0;
   display: block;
   overflow: hidden;

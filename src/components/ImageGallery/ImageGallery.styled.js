@@ -7,6 +7,6 @@ export const ListGallary = styled.ul`
   list-style: none;
   margin-left: auto;
   margin-right: auto;
-  width: 1600px;
+  width: 1500px;
   flex-basis: calc((100% / 4 - 60));
 `;

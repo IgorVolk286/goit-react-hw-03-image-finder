@@ -5,26 +5,25 @@ export const Header = styled.header`
   margin-left: auto;
   margin-right: auto;
 
-  padding: 20px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  padding: 8px;
+  margin-bottom: 15px;
   background-color: blue;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 `;
 export const Button = styled.button`
-  padding: 8px;
-  font-size: 24px;
+  padding: 5px;
+  font-size: 18px;
   border-radius: 5px;
   border: 1px solid black;
   margin-right: 30px;
 `;
 export const Input = styled.input`
   padding: 8px;
-  font-size: 24px;
+  font-size: 18px;
   border-radius: 5px;
   border: 1px solid black;
   width: 600px;

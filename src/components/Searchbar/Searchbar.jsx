@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Button, Input } from './Searchbar.styled';
+import { toast } from 'react-toastify';
 
 export class Searchbar extends Component {
   state = {
@@ -7,13 +8,13 @@ export class Searchbar extends Component {
   };
 
   changeInput = event => {
-    this.setState({ search: event.currentTarget.value });
+    this.setState({ search: event.currentTarget.value.toLowerCase() });
   };
 
   submitForm = event => {
     event.preventDefault();
     if (this.state.search === ' ') {
-      return alert('you must add name');
+      return toast.warn('You must enter symbol');
     }
     this.props.onSubmit(this.state.search);
     this.setState({ search: ' ' });

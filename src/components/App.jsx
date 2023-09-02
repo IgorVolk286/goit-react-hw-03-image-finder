@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
-import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
-import { ThreeCircles } from 'react-loader-spinner';
-import { Modal } from './Modal/Modal';
+import { Loader } from './Loader/Loader';
+// import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
   state = {
@@ -12,16 +13,15 @@ export class App extends Component {
     images: [],
     page: 1,
     loading: false,
-    show: false,
-    id: '',
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { search, page } = this.state;
     if (prevState.search !== search || prevState.page !== page) {
       this.setState({ loading: true });
+
       fetch(
-        `https://pixabay.com/api/?q=${search}&page=${page}&key=38330111-6d0efda7f4a8d995231e14698&image_type=photo&orientation=horizontal&per_page=100`
+        `https://pixabay.com/api/?q=${search}&page=${page}&key=38330111-6d0efda7f4a8d995231e14698&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(respons => respons.json())
         .then(data =>
@@ -30,10 +30,27 @@ export class App extends Component {
             totalHits: data.totalHits,
           }))
         )
-        .catch(error => console.log(`error`))
+        .catch(error => toast.error('Try agane!'))
         .finally(() => this.setState({ loading: false }));
+
+      //   await axios.get('https://pixabay.com/api/', {
+      //     params: {
+      //       page: this.state.page,
+      //       q: this.state.search,
+      //       per_page: '12',
+      //       key: '38330111-6d0efda7f4a8d995231e14698',
+      //     }
+      //   }).then(resp => this.setState(prevState => ({
+      //     images: [...prevState.images, ...resp.data.hits],
+      //     totalHits: resp.data.totalHits,
+      //   })).catch(error => toast.error('Try agane!'))
+      //     .finally() => this.setState({ loading: false }))
+      // };
+
+      // axios.defaults.baseURL = 'https://pixabay.com/api/';
     }
   }
+
   onClickButtonLoad = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
@@ -46,47 +63,24 @@ export class App extends Component {
       totalHits: 0,
     });
   };
-  onClickItem = () => {
-    this.setState(prevState => ({
-      show: !prevState.show,
-    }));
-  };
-  getId = e => {
-    this.setState({ id: e.target.id });
-  };
 
   render() {
-    const { show, images, totalHits, id } = this.state;
+    const { images, totalHits, loading } = this.state;
     return (
       <div>
-        {show && <Modal onClickItem={this.onClickItem} idItem={id} />}
         <Searchbar onSubmit={this.onSubmitForm} />
-        {images.length !== 0 && (
-          <ImageGallery getId={this.getId}>
-            <ImageGalleryItem
-              collection={images}
-              onClickItem={this.onClickItem}
-            />
-          </ImageGallery>
-        )}
+
+        {images.length !== 0 && <ImageGallery collections={images} />}
+
         {images.length !== 0 && totalHits !== images.length && (
           <Button onClick={this.onClickButtonLoad} />
         )}
-
-        {this.state.loading && (
-          <ThreeCircles
-            height="300"
-            width="300"
-            color="#4fa94d"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel="three-circles-rotating"
-            outerCircleColor=""
-            innerCircleColor=""
-            middleCircleColor=""
-          />
-        )}
+        {loading && <Loader />}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          theme="colored"
+        />
       </div>
     );
   }
