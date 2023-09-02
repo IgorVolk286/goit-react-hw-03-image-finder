@@ -13,10 +13,20 @@ export class App extends Component {
     images: [],
     page: 1,
     loading: false,
+    totalHits: ' ',
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { search, page } = this.state;
+    window.scrollBy({
+      top: 700,
+      behavior: 'smooth',
+    });
+    if (this.state.images.length === this.state.totalHits) {
+      toast.info(`YOU HAVE FULL COLLECTION `, {
+        position: 'bottom-center',
+      });
+    }
     if (prevState.search !== search || prevState.page !== page) {
       this.setState({ loading: true });
 
@@ -24,12 +34,13 @@ export class App extends Component {
         `https://pixabay.com/api/?q=${search}&page=${page}&key=38330111-6d0efda7f4a8d995231e14698&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(respons => respons.json())
-        .then(data =>
+        .then(data => {
           this.setState(prevState => ({
             images: [...prevState.images, ...data.hits],
             totalHits: data.totalHits,
-          }))
-        )
+          }));
+        })
+
         .catch(error => toast.error('Try agane!'))
         .finally(() => this.setState({ loading: false }));
 
@@ -60,7 +71,7 @@ export class App extends Component {
       search,
       images: [],
       page: 1,
-      totalHits: 0,
+      totalHits: 1,
     });
   };
 
