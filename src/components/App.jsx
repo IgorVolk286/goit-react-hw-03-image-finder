@@ -17,12 +17,12 @@ export class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { search, page } = this.state;
+    const { search, page, images, totalHits } = this.state;
     window.scrollBy({
       top: 700,
       behavior: 'smooth',
     });
-    if (this.state.images.length === this.state.totalHits) {
+    if (images.length === totalHits) {
       toast.info(`YOU HAVE FULL COLLECTION `, {
         position: 'bottom-center',
       });
